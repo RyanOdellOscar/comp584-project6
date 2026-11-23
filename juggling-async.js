@@ -11,17 +11,17 @@ for (let i = 0; i < urls.length; i++) {
         })
         response.on('error', console.error);
         response.on('end', () => {
-            contents[i] = data;
-            returned += 1;
+            contents[i] = data; // store data from request in the array when done
+            returned += 1; // signifies the end of the request
         })
     })
 }
 
-checkReturned = setInterval(() => {
+checkReturned = setInterval(() => { // checks if all request have returned every 100ms
     if (returned === urls.length) {
         clearInterval(checkReturned);
         for (let i = 0; i < contents.length; i++) {
-            console.log(contents[i]);
+            console.log(contents[i]); // prints the data if all request have returned
         }
     }
 }, 100)
